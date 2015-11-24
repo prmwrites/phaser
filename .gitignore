@@ -1,3 +1,6 @@
 # cloud9
 
 .c9/
+
+# npm
+node_modules/**/.bin/
