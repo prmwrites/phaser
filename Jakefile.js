@@ -38,8 +38,11 @@
                 noarg: true,
                 nocomma: true,
                 nonew: true,
+                strict: true,
+                undef: true,
                 
-                
+                node: true,
+                browser: true
             },
             globals: {}
         }, complete, fail);
