@@ -28,7 +28,19 @@
         
         jshint.checkFiles({
             files: "Jakefile.js",
-            options: {},
+            options: {
+                bitwise: true,
+                eqeqeq: true,
+                forin: true,
+                freeze: true,
+                futurehostile: true,
+                latedef: "nofunc",
+                noarg: true,
+                nocomma: true,
+                nonew: true,
+                
+                
+            },
             globals: {}
         }, complete, fail);
     }, { async: true });
