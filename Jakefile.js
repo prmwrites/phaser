@@ -2,7 +2,7 @@
     "use strict";
     desc("");
     task("default", function() {
-        console.log("BUILD OK");    
+        console.log("\nBUILD OK");    
     });
     
 }());
