@@ -2,7 +2,11 @@
   "name": "phaser",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "4.1.1"
+  },
   "devDependencies": {
-    "jake": "^8.0.12"
+    "jake": "^8.0.12",
+    "semver": "^5.1.0"
   }
 }
