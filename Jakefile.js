@@ -5,9 +5,10 @@
     var semver = require("semver");
     var jshint = require("simplebuild-jshint");
     var karma = require("simplebuild-karma");
-
-    var KARMA_CONFIG = "karma.conf.js";
+    var shell = require("shell");
     
+    var KARMA_CONFIG = "karma.conf.js";
+    var DIST_DIR = "generated/dist";
     
     //**** General-Purpose Tasks
 
@@ -25,9 +26,14 @@
     });
     
     desc("Run a localhost server");
-    task("run", function() {
-        jake.exec("node node_modules/http-server/bin/http-server src", { interactive: true }, complete);
+    task("run", [ "build"], function() {
+        jake.exec("node node_modules/http-server/bin/http-server generated/dist", { interactive: true }, complete);
     }, { async: true });
+
+    desc("Erase all generated files");
+    task("clean",function() {
+    	console.log("Erasing generated files: .");
+    })
     
     //**** Supporting Tasks
     
@@ -67,6 +73,13 @@
     		strict: !process.env.loose
     	}, complete, fail);
     }, { async: true });
+
+    desc("Build our distirbution directory");
+    task("build", [ DIST_DIR ], function() {
+    	console.log("Building distirbution directory:");
+    })
+
+    directory(DIST_DIR);
 
     function lintOptions() {
     	return {
