@@ -1,4 +1,4 @@
-/* globals desc: false, task: false, complete: false, fail: false */
+/* globals jake: false, desc: false, task: false, complete: false, fail: false */
 (function() {
     "use strict";
     
@@ -38,7 +38,7 @@
         process.stdout.write("Linting Javascript: ");
         
         jshint.checkFiles({
-            files: "Jakefile.js",
+            files: [ "Jakefile.js", "src/**/*.js" ],
             options: {
                 bitwise: true,
                 eqeqeq: true,
