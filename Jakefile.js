@@ -59,7 +59,10 @@
     task("test", function() {
     	console.log("Testing Javascript");
     	karma.run({
-    		configFile: KARMA_CONFIG
+    		configFile: KARMA_CONFIG,
+    		expectedBrowsers: [ 
+    			"Firefox 42.0.0 (Windows 7 0.0.0)"
+    		]
     	}, complete, fail);
     }, { async: true });
 
