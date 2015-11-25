@@ -7,7 +7,12 @@
     
     
     //**** General-Purpose Tasks
-    
+
+    desc("Start the Karma server (run this first)");
+    task("karma", function() {
+
+    });
+
     desc("Default build");
     task("default", [ "version", "lint" ], function() {
         console.log("\nBUILD OK");    
@@ -40,15 +45,7 @@
         jshint.checkFiles({
             files: [ "Jakefile.js", "src/**/*.js" ],
             options: lintOptions(),
-            globals: {
-            	// mocha
-            	describe: false,
-            	it: false,
-            	before: false,
-            	after: false,
-            	beforeEach: false,
-            	afterEach: false
-            }
+            globals: lintGlobals()
         }, complete, fail);
     }, { async: true });
     
@@ -69,6 +66,18 @@
             node: true,
             browser: true
     	};
+    }
+
+    function lintGlobals() {
+    	return {
+            	// mocha
+            	describe: false,
+            	it: false,
+            	before: false,
+            	after: false,
+            	beforeEach: false,
+            	afterEach: false
+            };
     }
 
 }());
