@@ -77,7 +77,9 @@
 
     desc("Build our distirbution directory");
     task("build", [ DIST_DIR ], function() {
-    	console.log("Building distirbution directory:");
+    	console.log("Building distirbution directory: .");
+    	shell.rm("-rf", DIST_DIR + "/*");
+    	shell.cp("src/index.html", DIST_DIR);
     })
 
     directory(DIST_DIR);
