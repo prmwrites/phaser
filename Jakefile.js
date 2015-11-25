@@ -39,22 +39,7 @@
         
         jshint.checkFiles({
             files: [ "Jakefile.js", "src/**/*.js" ],
-            options: {
-                bitwise: true,
-                eqeqeq: true,
-                forin: true,
-                freeze: true,
-                futurehostile: true,
-                latedef: "nofunc",
-                noarg: true,
-                nocomma: true,
-                nonew: true,
-                strict: true,
-                undef: true,
-                
-                node: true,
-                browser: true
-            },
+            options: lintOptions(),
             globals: {
             	// mocha
             	describe: false,
@@ -67,4 +52,23 @@
         }, complete, fail);
     }, { async: true });
     
+    function lintOptions() {
+    	return {
+    		bitwise: true,
+            eqeqeq: true,
+            forin: true,
+            freeze: true,
+            futurehostile: true,
+            latedef: "nofunc",
+            noarg: true,
+            nocomma: true,
+            nonew: true,
+            strict: true,
+            undef: true,
+            
+            node: true,
+            browser: true
+    	};
+    }
+
 }());
