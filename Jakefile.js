@@ -1,4 +1,4 @@
-/* globals jake: false, desc: false, task: false, complete: false, fail: false */
+/* globals jake: false, desc: false, task: false, complete: false, fail: false, directory: false */
 (function() {
     "use strict";
     
@@ -34,7 +34,7 @@
     task("clean",function() {
     	console.log("Erasing generated files: .");
     	shell.rm("-rf", "generated");
-    })
+    });
     
     //**** Supporting Tasks
     
@@ -56,7 +56,7 @@
         process.stdout.write("Linting Javascript: ");
         
         jshint.checkFiles({
-            files: [ "Jakefile.js", "src/**/*.js" ],
+            files: [ "Jakefile.js", "src/javascript/**/*.js" ],
             options: lintOptions(),
             globals: lintGlobals()
         }, complete, fail);
@@ -78,9 +78,11 @@
     desc("Build our distirbution directory");
     task("build", [ DIST_DIR ], function() {
     	console.log("Building distirbution directory: .");
+
     	shell.rm("-rf", DIST_DIR + "/*");
-    	shell.cp("src/index.html", DIST_DIR);
-    	jake.exec("node node_modules/browserify/bin/cmd.js src/app.js -o " + DIST_DIR + "/bundle.js", { interactive: true }, complete);
+    	shell.cp("src/content/*", DIST_DIR);
+
+    	jake.exec("node node_modules/browserify/bin/cmd.js src/javascript/app.js -o " + DIST_DIR + "/bundle.js", { interactive: true }, complete);
     }, {async: true});
 
     directory(DIST_DIR);
